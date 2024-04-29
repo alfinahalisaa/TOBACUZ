@@ -1,0 +1,115 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1F3B2C;
+    color: #fff;
+}
+
+/* Header styles */
+.header-container {
+    background-color: #1F3B2C;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.profile-picture {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.nav-menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    margin-left: 900px;
+}
+
+.nav-menu li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.nav-menu li a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.nav-menu li a.active {
+    color: #FBBC04;
+}
+
+/* Main content styles */
+.content {
+    padding: 20px;
+}
+
+.chart-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.filter {
+    margin-top: 20px;
+}
+
+.filter-text {
+    margin-left: 10px;
+    color: #fff;
+}
+
+.filter-btn {
+    background-color: #FBBC04;
+    color: #1F3B2C;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.footer-container {
+    background-color: #1F3B2C;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+
+/* Footer text styles */
+.footer-text {
+    color: #fff;
+    margin: 0;
+}
+
+.filter {
+    margin-top: 20px;
+    margin-bottom: 20px; /* Menambahkan jarak di bagian bawah */
+    text-align: center;
+}
+
+
+.filter-btn {
+    background-color: #FBBC04;
+    color: #1F3B2C;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}

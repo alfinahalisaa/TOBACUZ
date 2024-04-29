@@ -1,0 +1,167 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1F3B2C;
+    color: #fff;
+}
+
+/* Header styles */
+.header-container {
+    background-color: #1F3B2C;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo styles */
+.logo {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+}
+
+/* Profile picture styles */
+.profile-picture {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: auto;
+}
+
+/* Navigation menu styles */
+.nav-menu {
+    list-style-type: none;
+    margin-left: 900px;
+    padding: 0;
+}
+
+
+.nav-menu li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.nav-menu li a {
+    text-decoration: none;
+    color: #fff;
+}
+
+/* Card styles */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.card-container .card {
+    background-color: #FBBC04; /* Warna kuning untuk latar belakang kartu */
+    padding: 20px;
+    margin: 10px;
+    width: 300px; /* Sesuaikan lebar kartu sesuai kebutuhan */
+    text-align: center;
+    border-radius: 10px;
+}
+
+.card h4 {
+    margin-bottom: 10px;
+}
+.card p {
+    margin-bottom: 20px;
+}
+
+/* Main content styles */
+.main-content {
+    padding: 20px;
+}
+
+.card p.button {
+    background-color: #4CAF50; /* Warna hijau untuk tombol */
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.card p.button:hover {
+    background-color: #45a049; /* Efek hover untuk tombol */
+}
+
+/* Footer styles */
+.footer-container {
+    background-color: #1F3B2C;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+
+/* Footer text styles */
+.footer-text {
+    color: #fff;
+    margin: 0;
+}
+
+/* Add style for active link */
+.nav-menu li a.active {
+    color: #FBBC04; /* Yellow background color for active link */
+}
+
+/* Additional CSS for Add Data Button */
+.add-data-button {
+    background-color: #FBBC04; /* Warna kuning untuk latar belakang tombol */
+    color: white;
+    padding: 10px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px; /* Menambahkan jarak antara tombol dan card-container */
+    margin-right: 20px; /* Menambahkan jarak antara tombol dan card-container */
+    float: right; /* Mengatur posisi tombol ke kanan */
+    width: 32px;
+    height: 32px;
+}
+
+.main-content h2{
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.main-content h3{
+    font-size: 25px;
+    font-weight: 500;
+    margin-top: 20px;
+}
+
+.flex{
+    display: flex;
+    width: 100%;
+}
+
+.left{
+    width: 50%;
+    justify-content: start;
+}
+
+.right{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    justify-content: end;
+    font-size: 12px;
+    align-items: end;
+}

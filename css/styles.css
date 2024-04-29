@@ -1,0 +1,113 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #1F3B2C;
+    padding-bottom: 60px;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Header styles */
+.header-container {
+    background-color: #1F3B2C;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between; /* Mengatur jarak antara logo dan navigasi menu */
+    align-items: center;
+}
+
+/* Logo styles */
+.logo {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+}
+
+/* Navigation menu styles */
+.nav-menu {
+    list-style-type: none;
+    margin-left: 900px;
+}
+
+.logo-text {
+    color: #fff; /* Ubah warna teks menjadi putih */
+    margin-right: 10px; /* Berikan jarak antara teks dan gambar */
+}
+
+.nav-menu li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.nav-menu li a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.main-container {
+    width: 50%; /* Mengatur lebar menjadi setengah dari lebar layar */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 10px;
+    flex-direction: column;
+}
+
+
+.content {
+    flex: 1;
+    margin-bottom: 30px;
+}
+
+.main-container h1 {
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.get-started-button {
+    background-color: #ffc107;
+    color: #1F3B2C;
+    border: none;
+    padding: 15px 30px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.image-container {
+    width: 50%; /* Mengatur lebar menjadi setengah dari lebar .main-container */
+    margin-left: auto; /* Menempatkan .image-container di sebelah kiri */
+    margin-top: -175px; /* Menggeser .image-container ke atas */
+    display: flex;
+    justify-content: flex-start; /* Menempatkan gambar di sebelah kiri */
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.tobacco-image {
+    width: 100%;
+    max-width: 800px; /* Mengatur lebar maksimum gambar */
+}
+
+.footer-container {
+    background-color: #1F3B2C;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+
+/* Footer text styles */
+.footer-text {
+    color: #fff;
+    margin: 0;
+}
