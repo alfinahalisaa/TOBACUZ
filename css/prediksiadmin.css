@@ -121,19 +121,16 @@ body {
     color: #FBBC04; /* Yellow background color for active link */
 }
 
-/* Additional CSS for Add Data Button */
-.add-data-button {
+.right .add-data-button {
     background-color: #FBBC04; /* Warna kuning untuk latar belakang tombol */
     color: white;
     padding: 10px 10px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-bottom: 20px; /* Menambahkan jarak antara tombol dan card-container */
     margin-right: 20px; /* Menambahkan jarak antara tombol dan card-container */
     float: right; /* Mengatur posisi tombol ke kanan */
-    width: 32px;
-    height: 32px;
+    width: auto;
 }
 
 .main-content h2{

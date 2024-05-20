@@ -5,15 +5,14 @@ require 'koneksi.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get form data
     $jenis = $_POST["jenis"];
-    $harga = $_POST["harga"];
-    $tanggal = $_POST["tanggal"];
+    $informasi = $_POST["informasi"];
 
     // Prepare SQL statement
-    $query_sql = "INSERT INTO tambahdata (jenis, harga, tanggal) VALUES (?, ?, ?)";
+    $query_sql = "INSERT INTO informasi (jenis, informasi) VALUES (?, ?)";
     
     // Prepare and bind parameters
     $stmt = mysqli_prepare($conn, $query_sql);
-    mysqli_stmt_bind_param($stmt, "sss", $jenis, $harga, $tanggal);
+    mysqli_stmt_bind_param($stmt, "ss", $jenis, $informasi); // Ini baris yang menghasilkan kesalahan
 
     // Execute the statement
     if (mysqli_stmt_execute($stmt)) {
@@ -24,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Display pop-up message using JavaScript
         echo "<script>alert('Data berhasil disimpan!');</script>";
         // Redirect to tambahdata.php after showing the alert
-        echo "<script>window.location.href='prediksiadmin.php';</script>";
+        echo "<script>window.location.href='info.php';</script>";
         exit(); // Ensure script execution stops after redirection
     } else {
         echo "Gagal Tambah Data : " . mysqli_error($conn);

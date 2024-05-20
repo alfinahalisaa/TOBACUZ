@@ -3,11 +3,9 @@
 <head>
     <title>TOBACUZ</title>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <script>
-        function redirectToLoginPage() {
-            window.location.href = "login.php";
-        }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -26,7 +24,12 @@
     </header>
     <main>
         <div class="main-container">
-            <h1>MAKE YOUR TOBACCO PRODUCTS QUALITY FROM HERE, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eget ligula vitae nisi tincidunt dapibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas</h1>
+            <h1>Welcome to TOBACUZ!</h1>
+            <h2>Aplikasi ini memberikan Anda akses cepat dan akurat untuk memantau dan meramalkan harga tembakau. Dengan algoritma canggih dan data historis yang terperinci, Anda dapat membuat keputusan yang lebih baik dalam berinvestasi atau berdagang tembakau.</h2>
+            <h2>Fitur Utama:</h2>
+            <h2>1.Prediksi Harga: Dapatkan perkiraan harga!</h2>
+            <h2>2.Grafik Interaktif: Pantau tren harga tembakau secara visual melalui grafik yang mudah dipahami.</h2>
+            <h2>3.Informasi: Terima pembaruan terbaru mengenai informasi tembakau.</h2>
             <button class="get-started-button" onclick="redirectToLoginPage()">Get Started</button>
         </div>
         <div class="image-container">
@@ -38,5 +41,10 @@
             <p class="footer-text">&copy; 2024 TOBACUZ. All Rights Reserved.</p>
         </div>
     </footer>
+    <script>
+        function redirectToLoginPage() {
+            window.location.href = "login.php";
+        }
+    </script>
 </body>
 </html>

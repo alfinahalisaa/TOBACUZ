@@ -70,7 +70,7 @@
             <span class="logo-text">TOBACUZ</span>
             <nav>
                 <ul class="nav-menu">
-                    <li><a href="info.php">Informasi Harga</a></li>
+                    <li><a href="info.php">Info Tembakau</a></li>
                     <li><a href="prediksiadmin.php">Prediksi</a></li>
                     <li><a href="statistik.php" class="active">Statistik</a></li>
                 </ul>

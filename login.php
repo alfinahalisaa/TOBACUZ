@@ -20,7 +20,7 @@
             <button type="submit">Masuk</button>
         </form>        
         <div class="links">
-            <a href="#">Lupa Kata Sandi? Reset Disini</a>
+            <a href="reset.php">Lupa Kata Sandi? Reset Disini</a>
             <a href="regist.php">Belum Punya Akun? Daftar Disini</a>
         </div>
     </div>

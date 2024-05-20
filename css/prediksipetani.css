@@ -17,7 +17,7 @@ body {
     background-color: #1F3B2C;
     padding: 20px;
     display: flex;
-    justify-content: space-between; /* Mengatur jarak antara logo dan navigasi menu */
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -28,21 +28,21 @@ body {
     margin-right: 10px;
 }
 
-
-/* CSS untuk gambar bulat */
+/* Profile picture styles */
 .profile-picture {
-    width: 40px; /* Sesuaikan ukuran gambar bulat */
-    height: 40px; /* Sesuaikan ukuran gambar bulat */
-    border-radius: 50%; /* Buat gambar menjadi bulat */
-    margin-left: auto; /* Posisikan gambar di sebelah kanan */
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: auto;
 }
 
 /* Navigation menu styles */
 .nav-menu {
     list-style-type: none;
-    margin-left: 900px ; /* Posisikan menu di sebelah kanan */
+    margin-left: 900px;
     padding: 0;
 }
+
 
 .nav-menu li {
     display: inline;
@@ -155,4 +155,13 @@ body {
 .left{
     width: 50%;
     justify-content: start;
+}
+
+.right{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    justify-content: end;
+    font-size: 12px;
+    align-items: end;
 }

@@ -1,3 +1,17 @@
+<?php
+// Mulai sesi
+session_start();
+
+// Cek apakah nama pengguna sudah diset dalam sesi
+if(isset($_SESSION['username'])) {
+    // Jika ya, simpan nama pengguna dalam variabel
+    $username = $_SESSION['username'];
+} else {
+    // Jika tidak, arahkan pengguna kembali ke halaman login atau tampilkan pesan lainnya
+    header("Location: login.php");
+    exit; // Pastikan untuk menghentikan eksekusi skrip selanjutnya setelah melakukan redirect
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +27,7 @@
             <span class="logo-text">TOBACUZ</span>
             <nav>
                 <ul class="nav-menu">
-                    <li><a href="infopetani.php">Informasi Harga</a></li>
+                    <li><a href="infopetani.php">Info Tembakau</a></li>
                     <li><a href="prediksipetani.php" class="active" >Prediksi</a></li>
                     <li><a href="statistikpetani.php">Statistik</a></li>
                 </ul>
@@ -34,16 +48,12 @@
             </div>
             <div class="card-container">
                 <div class="card">
-                    <h4>tembakau Besuki Voor-Oogst</h4>
-                    <p class="button">Lihat Hasil Prediksi</p>
-                    <h4>tembakau Besuki Voor-Oogst</h4>
+                    <h4>Tembakau Virginia</h4>
+                    <p class="button" onclick=redirectToPredictionPage() >Lihat Hasil Prediksi</p>
+                    <h4>Klik untuk lihat prediksi</h4>
                 </div>
                 <div class="card">
-                    <h4>Tembakau Besuki Na-Oogst</h4>
-                    <p class="button">Lihat Hasil Prediksi</p>
-                </div>
-                <div class="card">
-                    <h4>Tembakau Virginia-Vorstenlanden</h4>
+                    <h4>Tembakau Besuki</h4>
                     <p class="button">Lihat Hasil Prediksi</p>
                 </div>
                 <div class="card">
@@ -60,10 +70,6 @@
                 </div>
                 <div class="card">
                     <h4>Tembakau Madura</h4>
-                    <p class="button">Lihat Hasil Prediksi</p>
-                </div>
-                <div class="card">
-                    <h4>Tembakau Virginia-Lombok Timur</h4>
                     <p class="button">Lihat Hasil Prediksi</p>
                 </div>
             </div>

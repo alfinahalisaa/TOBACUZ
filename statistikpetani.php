@@ -1,3 +1,14 @@
+<?php
+session_start(); // Start the session
+if (isset($_SESSION["email"])) {
+    $email = $_SESSION["email"];
+} else {
+    // Redirect to login page if session variable is not set
+    header("Location: login.php");
+    exit; // Stop execution after redirection
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,7 +81,7 @@
             <span class="logo-text">TOBACUZ</span>
             <nav>
                 <ul class="nav-menu">
-                    <li><a href="infopetani.php">Informasi Harga</a></li>
+                    <li><a href="infopetani.php">Info Tembakau</a></li>
                     <li><a href="prediksipetani.php">Prediksi</a></li>
                     <li><a href="statistikpetani.php" class="active">Statistik</a></li>
                 </ul>

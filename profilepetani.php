@@ -1,10 +1,67 @@
+<?php
+// Start session
+session_start();
+
+// Check if session variables are set
+if (isset($_SESSION["username"], $_SESSION["nama"], $_SESSION["email"])) {
+    $username = $_SESSION["username"];
+    $nama = $_SESSION["nama"];
+    $email = $_SESSION["email"];
+} else {
+    // Redirect to login page if user is not logged in or not an admin
+    header("Location: login.php");
+    exit;
+}
+
+$servername = "localhost";
+$username_db = "root";
+$password_db = "";
+$dbname = "db_users";
+
+// Create connection
+$conn = new mysqli($servername, $username_db, $password_db, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Check if form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Process form data and update user information in the database
+    $newUsername = $_POST["username"];
+    $newEmail = $_POST["email"];
+    $newNama = $_POST["nama"];
+
+    // SQL to update user information
+    $sql = "UPDATE registrasi SET username='$newUsername', email='$newEmail', nama='$newNama' WHERE username='$username'";
+
+    if ($conn->query($sql) === TRUE) {
+        // Update session variables with new information
+        $_SESSION["username"] = $newUsername;
+        $_SESSION["email"] = $newEmail;
+        $_SESSION["nama"] = $newNama;
+        
+        // Redirect to profileadmin.php or display a success message
+        header("Location: profileadmin.php");
+        exit;
+    } else {
+        echo "Error updating record: " . $conn->error;
+    }
+}
+
+// Close database connection
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TOBACUZ</title>
-    <link rel="stylesheet" href="css/profilepetani.css">
+    <link rel="stylesheet" href="css/profileadmin.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
         /* CSS untuk alert */
         #alertBackground {
@@ -63,8 +120,8 @@
             <span class="logo-text">TOBACUZ</span>
             <nav>
                 <ul class="nav-menu">
-                    <li><a href="infopetani.php" class="active">Informasi Harga</a></li>
-                    <li><a href="prediksipetani.php">Prediksi</a></li>
+                    <li><a href="infopetani.php">Info Tembakau</a></li>
+                    <li><a href="prediksipetani.php" class = "active">Prediksi</a></li>
                     <li><a href="statistikpetani.php">Statistik</a></li>
                 </ul>
             </nav>
@@ -81,19 +138,19 @@
                 <div class="detail">
                     <div class="card">
                         <label class="label">Username</label>
-                        <input type="text" id="username" class="value card" value="Alimuddin" disabled>
+                        <input type="text" id="username" class="value card" value="<?php echo $username; ?>" disabled>
                     </div>
                 </div>
                 <div class="detail">
                     <div class="card">
                         <label class="label">Email</label>
-                        <input type="email" id="email" class="value card" value="Alimuddin@gmail.com" disabled>
+                        <input type="email" id="email" class="value card" value="<?php echo $email; ?>" disabled>
                     </div>
                 </div>
                 <div class="detail">
                     <div class="card">
-                        <label class="label">Bio</label>
-                        <textarea id="bio" class="value card" disabled>Aku adalah salah satu petani dari website ini, senang mengenal kalian semua!</textarea>
+                        <label class="label">Nama</label>
+                        <input type="text" id="nama" class="value card" value="<?php echo $nama; ?>" disabled>
                     </div>
                 </div>
             </div>
@@ -102,7 +159,7 @@
             <button class="edit-profile" onclick="editProfile()">Edit Profile</button>
             <button class="save-profile" onclick="saveProfile()" style="display: none;">Simpan</button>
             <button class="logout" onclick="showAlert()">Logout</button>
-        </div>
+            <input type="hidden" id="id" value=""> <!-- Tambahkan input hidden untuk menyimpan ID pengguna -->
     </main>
     <footer class="footer">
         <div class="footer-content">
@@ -135,44 +192,50 @@
         }
 
         function keluar() {
-            // Kode untuk menghapus data (jika diperlukan)
-
-            // Langsung kembali ke halaman prediksi
-            window.location.href = "index.php";
-
-            // Menutup alert
-            closeAlert();
+            // Hapus sesi
+            window.location.href = "logout.php";
         }
 
         function editProfile() {
-            var usernameInput = document.getElementById("username");
-            var emailInput = document.getElementById("email");
-            var bioInput = document.getElementById("bio");
+            // Aktifkan input untuk mengedit
+            document.getElementById("username").disabled = false;
+            document.getElementById("email").disabled = false;
+            document.getElementById("nama").disabled = false;
 
-            usernameInput.disabled = false;
-            emailInput.disabled = false;
-            bioInput.disabled = false;
-
-            // Menampilkan tombol Simpan dan menyembunyikan tombol Edit Profile
-            document.querySelector('.edit-profile').style.display = 'none';
-            document.querySelector('.save-profile').style.display = 'inline-block';
+            // Sembunyikan tombol edit, tampilkan tombol simpan
+            document.querySelector(".edit-profile").style.display = "none";
+            document.querySelector(".save-profile").style.display = "block";
         }
 
         function saveProfile() {
-            var usernameInput = document.getElementById("username");
-            var emailInput = document.getElementById("email");
-            var bioInput = document.getElementById("bio");
+            // Ambil nilai yang diedit
+            var newUsername = document.getElementById("username").value;
+            var newEmail = document.getElementById("email").value;
+            var newNama = document.getElementById("nama").value;
 
-            // Simpan data yang diubah (kamu dapat menambahkan kode untuk menyimpan data ke server di sini)
+            // Validasi agar data tidak boleh kosong
+            if (newUsername.trim() === "" || newEmail.trim() === "" || newNama.trim() === "") {
+                alert("Data tidak boleh kosong!");
+                return; // Berhenti eksekusi fungsi jika data kosong
+            }
 
-            // Menonaktifkan input dan menampilkan kembali tombol Edit Profile
-            usernameInput.disabled = true;
-            emailInput.disabled = true;
-            bioInput.disabled = true;
-
-            // Menampilkan kembali tombol Edit Profile dan menyembunyikan tombol Simpan
-            document.querySelector('.edit-profile').style.display = 'inline-block';
-            document.querySelector('.save-profile').style.display = 'none';
+            // Kirim data yang diedit ke server menggunakan AJAX
+            $.ajax({
+                type: "POST",
+                url: "profileadmin.php", // Ganti dengan nama file PHP yang sama dengan halaman ini
+                data: {
+                    username: newUsername,
+                    email: newEmail,
+                    nama: newNama
+                },
+                success: function(response) {
+                    // Reload halaman setelah pembaruan berhasil
+                    location.reload();
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error updating profile:", error);
+                }
+            });
         }
     </script>
 </body>

@@ -1,3 +1,18 @@
+<?php
+// Misalnya, pada halaman prediksi.php
+session_start();
+
+// Cek apakah pengguna adalah admin atau bukan
+if(isset($_SESSION['username']) && ($_SESSION['isAdmin']) && $_SESSION['isAdmin'] === true) {
+    $username = $_SESSION['username'];
+} else {
+    // Lakukan tindakan untuk pengguna biasa atau arahkan ke halaman lain
+    // Contoh:
+    header("Location: login.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +28,7 @@
             <span class="logo-text">TOBACUZ</span>
             <nav>
                 <ul class="nav-menu">
-                    <li><a href="info.php">Informasi Harga</a></li>
+                    <li><a href="info.php">Info Tembakau</a></li>
                     <li><a href="prediksiadmin.php" class = "active">Prediksi</a></li>
                     <li><a href="statistik.php">Statistik</a></li>
                 </ul>
@@ -32,43 +47,15 @@
                     <h3>Harga Jenis Tembakau</h3>
                 </div>
                 <div class="right">
-                    <a href="tambahdata.php" class="add-data-button">+</button></a>
-                    <p class="tambah-data-text">Tambah Data</p>
+                    <button class="add-data-button" onclick="window.location.href='tambahdata.php';">Tambah Data</button>
                 </div>
             </div>
             <div class="card-container">
                 <div class="card">
-                    <h4>tembakau Besuki Voor-Oogst</h4>
-                    <p class="button">Lihat Hasil Prediksi</p>
-                    <h4>tembakau Besuki Voor-Oogst</h4>
+                    <h4>Tembakau Virginia</h4>
+                    <p class="button" onclick=redirectToPredictionPage() >Lihat Hasil Prediksi</p>
+                    <h4>Klik untuk lihat prediksi</h4>
                 </div>
-                <div class="card">
-                    <h4>Tembakau Besuki Na-Oogst</h4>
-                    <p class="button">Lihat Hasil Prediksi</p>
-                </div>
-                <div class="card">
-                    <h4>Tembakau Virginia-Vorstenlanden</h4>
-                    <p class="button">Lihat Hasil Prediksi</p>
-                </div>
-                <div class="card">
-                    <h4>Tembakau Deli</h4>
-                    <p class="button">Lihat Hasil Prediksi</p>
-                </div>
-                <div class="card">
-                    <h4>Tembakau Srintil-Temanggung</h4>
-                    <p class="button">Lihat Hasil Prediksi</p>
-                </div>
-                <div class="card">
-                    <h4>Tembakau Garut</h4>
-                    <p class="button">Lihat Hasil Prediksi</p>
-                </div>
-                <div class="card">
-                    <h4>Tembakau Madura</h4>
-                    <p class="button">Lihat Hasil Prediksi</p>
-                </div>
-                <div class="card">
-                    <h4>Tembakau Virginia-Lombok Timur</h4>
-                    <p class="button">Lihat Hasil Prediksi</p>
                 </div>
             </div>
         </div>
@@ -78,5 +65,11 @@
             <p class="footer-text">&copy; 2024 TOBACUZ. All Rights Reserved.</p>
         </div>
     </footer>
+    <script>
+    function redirectToPredictionPage() {
+        // Mengarahkan pengguna ke halaman hasil prediksi
+        window.location.href = "hasilvirginia.php";
+    }
+    </script>
 </body>
 </html>

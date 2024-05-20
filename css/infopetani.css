@@ -6,39 +6,70 @@
 }
 
 /* Body styles */
-body {
+body, html {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #1F3B2C;
-    padding-bottom: 60px;
-    min-height: 100vh;
     position: relative;
+    min-height: 100%;
+    overflow-x: hidden; /* Mengatasi issue overflow-x */
 }
 
-/* Header styles */
-.header-container {
+/* Main content styles */
+.main-content {
+    padding: 40px;
+    text-align: center;
+    padding-bottom: 100px; /* Menambahkan padding bottom untuk memberi ruang bagi footer */
+}
+
+/* Card container styles */
+.card-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px; /* Menambahkan margin bottom untuk memberi ruang bagi footer */
+}
+
+/* Footer styles */
+.footer-container {
     background-color: #1F3B2C;
     padding: 20px;
-    display: flex;
-    justify-content: space-between; /* Mengatur jarak antara logo dan navigasi menu */
-    align-items: center;
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
 }
 
-/* Logo styles */
+.card .button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.card .button:hover {
+    background-color: #45a049;
+}
+
 .logo {
     width: 50px;
     height: auto;
     margin-right: 10px;
 }
 
-/* CSS untuk gambar bulat */
 .profile-picture {
-    width: 40px; /* Sesuaikan ukuran gambar bulat */
-    height: 40px; /* Sesuaikan ukuran gambar bulat */
-    border-radius: 50%; /* Buat gambar menjadi bulat */
-    margin-left: auto; /* Posisikan gambar di sebelah kanan */
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: auto;
 }
-/* Navigation menu styles */
+
 .nav-menu {
     list-style-type: none;
     margin-left: 900px;
@@ -59,6 +90,7 @@ body {
 .main-content {
     padding: 40px;
     text-align: center;
+    min-height: calc(100vh - 140px); /* Ketinggian konten adalah 100% tinggi layar dikurangi tinggi header dan footer */
 }
 
 /* Card container styles */
@@ -69,7 +101,6 @@ body {
     margin-top: 20px;
 }
 
-/* Card styles */
 .card {
     background-color: #FBBC04;
     padding: 20px;
@@ -77,22 +108,11 @@ body {
     width: 300px;
 }
 
-/* Footer styles */
-.footer-container {
-    background-color: #1F3B2C;
-    padding: 20px;
-    text-align: center;
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-}
-
 .logo-text {
-    color: #fff; /* Ubah warna teks menjadi putih */
-    margin-right: 10px; /* Berikan jarak antara teks dan gambar */
+    color: #fff;
+    margin-right: 10px;
 }
 
-/* Footer text styles */
 .footer-text {
     color: #fff;
     margin: 0;
@@ -100,5 +120,5 @@ body {
 
 /* Add style for active link */
 .nav-menu li a.active {
-    color: #FBBC04; /* Yellow background color for active link */
+    color: #FBBC04;
 }

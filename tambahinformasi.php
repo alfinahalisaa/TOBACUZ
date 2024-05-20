@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -78,7 +79,7 @@
             <span class="logo-text">TOBACUZ</span>
             <nav>
                 <ul class="nav-menu">
-                    <li><a href="info.php">Info Tembakau</a></li>
+                    <li><a href="info.php">Informasi Harga</a></li>
                     <li><a href="prediksiadmin.php" class="active">Prediksi</a></li>
                     <li><a href="statistik.php">Statistik</a></li>
                 </ul>
@@ -92,21 +93,17 @@
         <div class="container">
         <h2>Hallo Alfina!</h2>
         <p>Jangan Lupa Update Informasi, ya!</p>
-        <form action="koneksitambahdata.php" method="POST">
+        <form action="koneksiinformasi.php" method="POST">
             <div class="form-group">
                 <label for="jenis">Jenis Tembakau</label>
-                <input type="text" id="jenis" name="jenis" placeholder="Tambahkan jenis tembakau disini">
+                <input type="text" id="jenis" name="jenis">
             </div>
             <div class="form-group">
-                <label for="harga">Harga Tembakau</label>
-                <input type="text" id="harga" name="harga" placeholder="Tambahkan harga tembakau disini">
-            </div>
-            <div class="form-group">
-                <label for="tanggal">Tanggal DD/MM/YY</label>
-                <input type="date" id="tanggal" name="tanggal">
+                <label for="informasi">Informasi Tembakau</label>
+                <input type="text" id="informasi" name="informasi" >
             </div>
             <div>
-            <button class="btn-tambah" type="submit">Tambah Data</button>
+            <button class="btn-tambah" type="submit">Tambah Informasi Data</button>
     </form>
             <button class="btn-kembali" type="button" onclick="showConfirmation()">Kembali</button>
         </div>
@@ -126,26 +123,25 @@
     </div>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-        // Mendapatkan elemen input tanggal
-        var tanggalInput = document.getElementById("tanggal");
+            // // Mendapatkan elemen input tanggal
+            // var tanggalInput = document.getElementById("tanggal");
 
-        // Mendapatkan tanggal saat ini
-        var currentDate = new Date();
+            // // Mendapatkan tanggal saat ini
+            // var currentDate = new Date();
 
-        // Format tanggal dengan YYYY-MM-DD
-        var formattedDate = currentDate.toISOString().split('T')[0];
+            // // Format tanggal dengan YYYY-MM-DD
+            // var formattedDate = currentDate.toISOString().split('T')[0];
 
-        // Menetapkan nilai input tanggal ke tanggal saat ini
-        tanggalInput.value = formattedDate;
+            // // Menetapkan nilai input tanggal ke tanggal saat ini
+            // tanggalInput.value = formattedDate;
         });
 
         function validateForm() {
             var jenis = document.getElementById("jenis").value;
-            var harga = document.getElementById("harga").value;
-            var tanggal = document.getElementById("tanggal").value;
+            var informasi = document.getElementById("informasi").value;
 
             // Check if any of the fields is empty
-            if (jenis === "" || harga === "" || tanggal === "") {
+            if (jenis === "" || informasi === "") {
                 // Display alert if any field is empty
                 alert("Semua kolom harus diisi!");
                 return false; // Prevent form submission
@@ -177,7 +173,7 @@
 
         function keluar() {
             // Redirect or do whatever you want when "Ya" is clicked
-            window.location.href = "prediksiadmin.php";
+            window.location.href = "info.php";
         }
 </script>
 </body>
