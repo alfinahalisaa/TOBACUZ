@@ -70,6 +70,9 @@
             z-index: 1001; /* Meletakkan pop-up di atas latar belakang */
             color: black; /* Warna teks hitam */
         }
+        .container{
+            color: #0A2A19;
+        }
     </style>
 </head>
 <body>

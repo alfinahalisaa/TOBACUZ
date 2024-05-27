@@ -21,6 +21,14 @@ if(isset($_SESSION['username']) && ($_SESSION['isAdmin']) && $_SESSION['isAdmin'
     <title>TOBACUZ</title>
     <link rel="stylesheet" href="css/prediksiadmin.css">
 </head>
+<style>
+    .card {
+        color: #0A2A19;
+    }
+    .right .add-data-button {
+        color: #0A2A19;
+    }
+</style>
 <body>
     <header>
         <div class="header-container">
@@ -52,7 +60,7 @@ if(isset($_SESSION['username']) && ($_SESSION['isAdmin']) && $_SESSION['isAdmin'
             </div>
             <div class="card-container">
                 <div class="card">
-                    <h4>Tembakau Virginia</h4>
+                    <h4 class="h4">Tembakau Virginia</h4>
                     <p class="button" onclick=redirectToPredictionPage() >Lihat Hasil Prediksi</p>
                     <h4>Klik untuk lihat prediksi</h4>
                 </div>
@@ -68,7 +76,7 @@ if(isset($_SESSION['username']) && ($_SESSION['isAdmin']) && $_SESSION['isAdmin'
     <script>
     function redirectToPredictionPage() {
         // Mengarahkan pengguna ke halaman hasil prediksi
-        window.location.href = "hasilvirginia.php";
+        window.location.href = "hasiladmin.php";
     }
     </script>
 </body>

@@ -12,6 +12,7 @@ if(isset($_SESSION['username'])) {
     exit; // Pastikan untuk menghentikan eksekusi skrip selanjutnya setelah melakukan redirect
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,14 +38,18 @@ if(isset($_SESSION['username'])) {
             cursor: pointer;
         }
 
-        /* Style untuk card informasi */
         .info-card {
-            width: 100%;
-            background-color: #FBBC04;
-            padding: 20px;
-            margin-bottom: 20px;
-            overflow-y: scroll; /* Tambahkan overflow-y: scroll; untuk dapat discroll */
-            max-height: 300px; /* Atur ketinggian maksimum */
+        width: 100%;
+        background-color: #FBBC04;
+        padding: 20px;
+        margin-bottom: 20px;
+        overflow-y: scroll; /* Tambahkan overflow-y: scroll; untuk dapat discroll */
+        max-height: 300px; /* Atur ketinggian maksimum */
+        color: #0A2A19;
+        }
+
+        h4 {
+            color: #0A2A19;
         }
     </style>
 </head>
@@ -69,34 +74,23 @@ if(isset($_SESSION['username'])) {
         <div class="main-content">
             <div class="flex">
                 <div class="left">
-                    <h2>Hallo Petani!</h2>
+                    <h2>Hallo Petani</h2>
                     <p>Jangan Lupa Update Informasi, ya!</p>
                 </div>
             </div>
+            <!-- Card Informasi -->
             <div class="card-container" id="informasi">
                 <div class="info-card" id="informasi_besuki" style="display:none;">
-                    <h4>Informasi Tembakau Besuki Voor-Oogst</h4>
-                    <p>Ini adalah informasi tentang Tembakau Besuki Voor-Oogst: <?php echo $informasi; ?></p>
                 </div>
                 <div class="info-card" id="informasi_deli" style="display:none;">
-                    <h4>Informasi Tembakau Deli</h4>
-                    <p>Ini adalah informasi tentang Tembakau Deli.</p>
                 </div>
                 <div class="info-card" id="informasi_virginia" style="display:none;">
-                    <h4>Informasi Tembakau Virginia-Vorstenlanden</h4>
-                    <p>Ini adalah informasi tentang Tembakau Virginia-Vorstenlanden.</p>
                 </div>
-                <div class="info-card" id="informasi_srintil_temanggung" style="display:none;">
-                    <h4>Informasi Tembakau Srintil-Temanggung</h4>
-                    <p>Ini adalah informasi tentang Tembakau Srintil-Temanggung.</p>
+                <div class="info-card" id="informasi_temanggung" style="display:none;">
                 </div>
                 <div class="info-card" id="informasi_garut" style="display:none;">
-                    <h4>Informasi Tembakau Garut</h4>
-                    <p>Ini adalah informasi tentang Tembakau Garut.</p>
                 </div>
                 <div class="info-card" id="informasi_madura" style="display:none;">
-                    <h4>Informasi Tembakau Madura</h4>
-                    <p>Ini adalah informasi tentang Tembakau Madura.</p>
                 </div>
             </div>
             <!-- Card Tembakau -->
@@ -113,9 +107,9 @@ if(isset($_SESSION['username'])) {
                     <h4>Tembakau Virginia</h4>
                     <p class="button" onclick="showInfo('virginia')">Lihat Informasi</p>
                 </div>
-                <div class="card" id="srintil_temanggung">
-                    <h4>Tembakau Srintil-Temanggung</h4>
-                    <p class="button" onclick="showInfo('srintil_temanggung')">Lihat Informasi</p>
+                <div class="card" id="temanggung">
+                    <h4>Tembakau Temanggung</h4>
+                    <p class="button" onclick="showInfo('temanggung')">Lihat Informasi</p>
                 </div>
                 <div class="card" id="garut">
                     <h4>Tembakau Garut</h4>
@@ -133,21 +127,28 @@ if(isset($_SESSION['username'])) {
             <p class="footer-text">&copy; 2024 TOBACUZ. All Rights Reserved.</p>
         </div>
     </footer>
-
     <script>
+        function getInformasi(jenis) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    var infoCardToShow = document.getElementById("informasi_" + jenis);
+                    infoCardToShow.innerHTML = this.responseText;
+                    infoCardToShow.style.display = "block";
+                }
+            };
+            xhttp.open("GET", "get_informasi.php?jenis=" + jenis, true);
+            xhttp.send();
+        }
+
         function showInfo(cardId) {
-            // Semua card informasi tembakau disembunyikan
             var allInfoCards = document.querySelectorAll("#informasi .info-card");
             allInfoCards.forEach(function(card) {
                 card.style.display = "none";
             });
 
-            // Card informasi yang sesuai dengan card yang ditekan ditampilkan
-            var infoCardToShow = document.getElementById("informasi_" + cardId);
-            infoCardToShow.style.display = "block";
+            getInformasi(cardId);
         }
-
-        // Fungsi untuk menampilkan pesan selamat datang
         function showWelcomeMessage(username) {
             alert("Selamat datang " + username + "!");
         }

@@ -75,9 +75,11 @@ body {
 
 .card h4 {
     margin-bottom: 10px;
+    color: #0A2A19;
 }
 .card p {
     margin-bottom: 20px;
+    color: #0A2A19;
 }
 
 /* Main content styles */
@@ -142,6 +144,10 @@ body {
     font-size: 25px;
     font-weight: 500;
     margin-top: 20px;
+}
+
+.h4 {
+    color: #0A2A19;
 }
 
 .flex{

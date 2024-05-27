@@ -10,7 +10,7 @@
     <div class="container">
         <img src="asset/logo.png">
         <span class="welcome-text">Selamat datang di Tobacuz!</span>
-        <form action="koneksilogin.php" method="POST">
+        <form action="koneksilogin.php" method="POST" onsubmit="return validateForm()">
             <label for="email">Email atau Nomor Telepon</label>
             <input type="text" id="email" name="email" placeholder="Masukkan email atau nomor telepon" required>
             <label for="password">Kata Sandi</label>
@@ -25,7 +25,7 @@
         </div>
     </div>
     <script>
-        function login() {
+        function validateForm() {
             var email = document.getElementById("email").value;
             var password = document.getElementById("password").value;
             var isAdmin = document.getElementById("admin").checked;

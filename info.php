@@ -1,4 +1,5 @@
 <?php
+require 'koneksi.php';
 // Misalnya, pada halaman prediksi.php
 session_start();
 
@@ -12,6 +13,7 @@ if(isset($_SESSION['username']) && ($_SESSION['isAdmin']) && $_SESSION['isAdmin'
     exit;
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,12 +41,20 @@ if(isset($_SESSION['username']) && ($_SESSION['isAdmin']) && $_SESSION['isAdmin'
 
         /* Style untuk card informasi */
         .info-card {
-            width: 100%;
-            background-color: #FBBC04;
-            padding: 20px;
-            margin-bottom: 20px;
-            overflow-y: scroll; /* Tambahkan overflow-y: scroll; untuk dapat discroll */
-            max-height: 300px; /* Atur ketinggian maksimum */
+        width: 100%;
+        background-color: #FBBC04;
+        padding: 20px;
+        margin-bottom: 20px;
+        overflow-y: scroll; /* Tambahkan overflow-y: scroll; untuk dapat discroll */
+        max-height: 300px; /* Atur ketinggian maksimum */
+        color: #0A2A19;
+        }
+
+        .right .add-data-button {
+            color: #0A2A19;
+        }
+
+        h4 {
             color: #0A2A19;
         }
     </style>
@@ -80,30 +90,16 @@ if(isset($_SESSION['username']) && ($_SESSION['isAdmin']) && $_SESSION['isAdmin'
             <!-- Card Informasi -->
             <div class="card-container" id="informasi">
                 <div class="info-card" id="informasi_besuki" style="display:none;">
-                    <h4>Informasi Tembakau Besuki</h4>
-                    <p>Tembakau Besuki ini dimanfaatkan terutama untuk pembalut cerutu (deklabad) 
-                        selain sebagai bahan pengikat (Binder) serta pengisi (filler) aroma cerutu yang berkualitas
-                        Tembakau Besuki dibagi menjadi Besuki Na-Oogst dan Var-Oogst.</p>
                 </div>
                 <div class="info-card" id="informasi_deli" style="display:none;">
-                    <h4>Informasi Tembakau Deli</h4>
-                    <p>Ini adalah informasi tentang Tembakau Deli.</p>
                 </div>
                 <div class="info-card" id="informasi_virginia" style="display:none;">
-                    <h4>Informasi Tembakau Virginia</h4>
-                    <p>Ini adalah informasi tentang Tembakau Virginia.</p>
                 </div>
-                <div class="info-card" id="informasi_srintil_temanggung" style="display:none;">
-                    <h4>Informasi Tembakau Srintil-Temanggung</h4>
-                    <p>Ini adalah informasi tentang Tembakau Srintil-Temanggung.</p>
+                <div class="info-card" id="informasi_temanggung" style="display:none;">
                 </div>
                 <div class="info-card" id="informasi_garut" style="display:none;">
-                    <h4>Informasi Tembakau Garut</h4>
-                    <p>Ini adalah informasi tentang Tembakau Garut.</p>
                 </div>
                 <div class="info-card" id="informasi_madura" style="display:none;">
-                    <h4>Informasi Tembakau Madura</h4>
-                    <p>Ini adalah informasi tentang Tembakau Madura.</p>
                 </div>
             </div>
             <!-- Card Tembakau -->
@@ -120,9 +116,9 @@ if(isset($_SESSION['username']) && ($_SESSION['isAdmin']) && $_SESSION['isAdmin'
                     <h4>Tembakau Virginia</h4>
                     <p class="button" onclick="showInfo('virginia')">Lihat Informasi</p>
                 </div>
-                <div class="card" id="srintil_temanggung">
-                    <h4>Tembakau Srintil-Temanggung</h4>
-                    <p class="button" onclick="showInfo('srintil_temanggung')">Lihat Informasi</p>
+                <div class="card" id="temanggung">
+                    <h4>Tembakau Temanggung</h4>
+                    <p class="button" onclick="showInfo('temanggung')">Lihat Informasi</p>
                 </div>
                 <div class="card" id="garut">
                     <h4>Tembakau Garut</h4>
@@ -141,18 +137,27 @@ if(isset($_SESSION['username']) && ($_SESSION['isAdmin']) && $_SESSION['isAdmin'
         </div>
     </footer>
     <script>
+        function getInformasi(jenis) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    var infoCardToShow = document.getElementById("informasi_" + jenis);
+                    infoCardToShow.innerHTML = this.responseText;
+                    infoCardToShow.style.display = "block";
+                }
+            };
+            xhttp.open("GET", "get_informasi.php?jenis=" + jenis, true);
+            xhttp.send();
+        }
+
         function showInfo(cardId) {
-            // Semua card informasi tembakau disembunyikan
             var allInfoCards = document.querySelectorAll("#informasi .info-card");
             allInfoCards.forEach(function(card) {
                 card.style.display = "none";
             });
 
-            // Card informasi yang sesuai dengan card yang ditekan ditampilkan
-            var infoCardToShow = document.getElementById("informasi_" + cardId);
-            infoCardToShow.style.display = "block";
+            getInformasi(cardId);
         }
-
         function showWelcomeMessage(username) {
             alert("Selamat datang " + username + "!");
         }

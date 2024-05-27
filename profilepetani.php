@@ -111,6 +111,14 @@ $conn->close();
             background-color: #d9f310;
             color: white;
         }
+
+        .card{
+            color: #0A2A19;
+        }
+
+        .card .label{
+            color: #0A2A19;
+        }
     </style>
 </head>
 <body>

@@ -20,6 +20,11 @@ if(isset($_SESSION['username'])) {
     <title>TOBACUZ</title>
     <link rel="stylesheet" href="css/prediksipetani.css">
 </head>
+<style>
+    .card-container{
+        color: #0A2A19;
+    }
+</style>
 <body>
     <header>
         <div class="header-container">
@@ -52,26 +57,6 @@ if(isset($_SESSION['username'])) {
                     <p class="button" onclick=redirectToPredictionPage() >Lihat Hasil Prediksi</p>
                     <h4>Klik untuk lihat prediksi</h4>
                 </div>
-                <div class="card">
-                    <h4>Tembakau Besuki</h4>
-                    <p class="button">Lihat Hasil Prediksi</p>
-                </div>
-                <div class="card">
-                    <h4>Tembakau Deli</h4>
-                    <p class="button">Lihat Hasil Prediksi</p>
-                </div>
-                <div class="card">
-                    <h4>Tembakau Srintil-Temanggung</h4>
-                    <p class="button">Lihat Hasil Prediksi</p>
-                </div>
-                <div class="card">
-                    <h4>Tembakau Garut</h4>
-                    <p class="button">Lihat Hasil Prediksi</p>
-                </div>
-                <div class="card">
-                    <h4>Tembakau Madura</h4>
-                    <p class="button">Lihat Hasil Prediksi</p>
-                </div>
             </div>
         </div>
     </main>
@@ -80,5 +65,11 @@ if(isset($_SESSION['username'])) {
             <p class="footer-text">&copy; 2024 TOBACUZ. All Rights Reserved.</p>
         </div>
     </footer>
+    <script>
+    function redirectToPredictionPage() {
+        // Mengarahkan pengguna ke halaman hasil prediksi
+        window.location.href = "hasilpetani.php";
+    }
+    </script>
 </body>
 </html>
